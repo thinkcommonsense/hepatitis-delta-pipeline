@@ -1,6 +1,7 @@
 nextflow.enable.dsl=2
 //download fasta from ncbi using accession number
 process DOWNLOAD_REFERENCE {
+    conda 'entrez-direct=24.0'
     input:
     val accession
 
@@ -27,6 +28,7 @@ process COMBINE {
 }
 // alignment
 process ALIGN {
+    conda 'mafft=7.525'
     input:
     path combined_fasta
 
@@ -41,6 +43,7 @@ process ALIGN {
 // again, trimal tool is something that need care
 // at this point, I am bored to add more comments
 process TRIMAL {
+    conda 'trimal=1.5.0'
     input:
     path aligned_fasta
 
