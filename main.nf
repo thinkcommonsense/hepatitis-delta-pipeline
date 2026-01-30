@@ -39,6 +39,7 @@ process ALIGN {
     """
 }
 // again, trimal tool is something that need care
+// at this point, I am bored to add more comments
 process TRIMAL {
     input:
     path aligned_fasta
@@ -68,6 +69,6 @@ workflow {
         align_out = ALIGN(combine_out)
         TRIMAL(align_out)
     } else {
-        error "Please provide input directory with --in"
+        error "--in directory is missing"
     }
 }
